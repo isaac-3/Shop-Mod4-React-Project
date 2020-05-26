@@ -12,7 +12,7 @@ class Random extends Component {
     searchCategory:'',
     current_user_id: this.props.location.state,
     user:{},
-    carts:[]
+    carts: this.props.carts
   };
 
 searchItem=(e)=>{
@@ -88,25 +88,10 @@ this.getItems(searchTerm)
           products: result.products
         });
       });
-  }
-
-  // removeOrder = (order) => {
-  //   fetch(`http://localhost:3000/carts/${this.state.carts[0].id}`,{
-  //       method: 'PATCH',
-  //       headers: {'Content-Type': 'application/json'},
-  //       body: JSON.stringify({
-  //           id: this.state.carts[0].id,
-  //           order: order
-  //       })
-  //   })
-  //   .then(res => res.json())
-  //   .then(user => (
-  //     this.setState({carts: user.carts})
-  //   ))
-  // }
-  
+  }  
 
   render() {
+    // console.log(this.props)
   let filteredProducts=[]
     if(this.state.products){
       filteredProducts= this.state.products.filter( product => product.title.toLowerCase().startsWith(this.state.searchTerm.toLowerCase()))
@@ -124,9 +109,10 @@ this.getItems(searchTerm)
         searchCategory={this.searchCategory}
         current_user_id={this.props.location.state} 
         carts={this.state.carts}
-        // removeOrder={this.removeOrder}
         />
-        <ProductList products={filteredProducts}/>
+        <ProductList products={filteredProducts}
+        current_user_id={this.props.location.state} 
+        carts={this.state.carts}/>
       </div>
     )
   }

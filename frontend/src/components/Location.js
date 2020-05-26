@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow} from 'react-google-maps'
 
-REACT_APP_GOOGLE_KEY="AIzaSyDJvg5WPlOh_7Y6IHPCItqZTVQTCpC9aqs"
 
 function Map(){
   

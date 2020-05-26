@@ -14,21 +14,31 @@ class CartsController < ApplicationController
 
     def update
         cart = Cart.find(params[:id])
-<<<<<<< HEAD
-        del_order = cart.orders.select{|o| o.product_id == params[:order][:id]}.first
-        upd_orders = cart.orders.select{|o| o.product_id != del_order.product_id}
-        cart.update_attribute(:orders, upd_orders)
-        render json: cart, :include => [ :orders => {:include => [:product]}]
-=======
-        # byebug
-        del_order = cart.orders.select{|o| o.product_id == params[:order][:id]}.first
-        upd_orders = cart.orders.select{|o| o.product_id != del_order.product_id}
-        cart.update_attribute(:orders, upd_orders)
-        # byebug
-        user = User.find_by(id: cart.user_id)
-        render json: user, :include => [ :carts => {:include => [:orders => {:include => [:product]}]}]
-        # render json: cart, :include => [ :orders => {:include => [:product]}]
->>>>>>> 26d63ad7593f2e4b97163f8ac8346d122adddaf6
+        if(params[:order] == nil)
+            newProd = Product.create({
+                title: params[:newProd][:title],
+                price: params[:newProd][:price][:current_retail],
+                image: params[:newProd][:image],
+                description: params[:newProd][:description]
+            })
+
+            newOrder = Order.create({
+                product_id: newProd.id,
+                cart_id: cart.id
+            })
+
+            new_add_order = cart.orders.push(newOrder)
+            cart.update_attribute(:orders, new_add_order)
+            user = User.find_by(id: cart.user_id)
+            render json: user, :include => [ :carts => {:include => [:orders => {:include => [:product]}]}]
+        else
+            del_order = cart.orders.select{|o| o.product_id == params[:order][:id]}.first
+            upd_orders = cart.orders.select{|o| o.product_id != del_order.product_id}
+            cart.update_attribute(:orders, upd_orders)
+
+            user = User.find_by(id: cart.user_id)
+            render json: user, :include => [ :carts => {:include => [:orders => {:include => [:product]}]}]
+        end
     end
     
     def checkout

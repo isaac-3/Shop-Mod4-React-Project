@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import EditCart from "./EditCart";
-import NavBar from './NavBar'
+import CartNavBar from './CartNavBar'
 
 export default class Checkout extends React.Component {
 
@@ -16,7 +16,10 @@ export default class Checkout extends React.Component {
             }),
         })
             .then((res) => res.json())
-            .then((user) => this.props.history.push("/home", user.id));
+            .then((user) => {
+            alert("Purchased")
+            this.props.history.push("/home", user.id)
+            });
     };
 
     removeOrder = (order) => {
@@ -39,10 +42,10 @@ export default class Checkout extends React.Component {
     render(){
     let user_id = this.props.location.state.user
     let totalPrice = this.state.current_cart.orders.map((o) => o.product.price).reduce((a, b) => a + b, 0);
-
+    console.log(this.props)
     return (
         <div>
-            <NavBar/>
+            <CartNavBar current_user_id={this.props.location.state.user} carts={this.props.location.state.cart}/>
             <div class="container">
                 <h2>Your Cart</h2>
                 {this.state.current_cart.orders.map((order) => (

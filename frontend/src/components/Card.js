@@ -6,6 +6,7 @@ class Card extends Component {
   render() {
     // console.log(this.props.price)
     // console.log(this.props.price.current_retail)
+    // console.log(this.props)
     return (
       <div className="col mb-4">
         <div class="card" style={{ width: "18rem" }}>
@@ -25,7 +26,7 @@ class Card extends Component {
             <li class="list-group-item">OTHER STUFF</li>
           </ul>
           <div class="card-body">
-          <Link to={{pathname: '/cart',state: {image: this.props.image}}}>
+          <Link to={{pathname: '/show',state: {product: this.props}}}>
             <button type="button" class="btn btn-primary mr-2">
               See more...
             </button>

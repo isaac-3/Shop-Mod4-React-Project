@@ -20,7 +20,7 @@ products = response.body["products"]
     User.create({username: Faker::Name.first_name,password:"123",address: Faker::Address.full_address,email: Faker::Internet.email})
 end
 
-products.each{|p| Product.create({name: p["title"],description: p["description"],price: p["price"]["current_retail_max"],image:"#{p["images"][0]["base_url"]}" + "#{p["images"][0]["primary"]}"})}
+products.each{|p| Product.create({title: p["title"],description: p["description"],price: p["price"]["current_retail_max"],image:"#{p["images"][0]["base_url"]}" + "#{p["images"][0]["primary"]}"})}
 
 
 50.times do 
