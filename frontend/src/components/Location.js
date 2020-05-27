@@ -1,13 +1,12 @@
+
 import React, {useState, useEffect} from 'react';
 import {GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow} from 'react-google-maps'
 import NavBar from './NavBar';
 
 
-function Map(){
-  
-    const [target, setTarget] = useState(null)
-
-    const [locals, setLocals]= useState([])
+function Map() {
+  const [target, setTarget] = useState(null);
+  const [locals, setLocals]= useState([])
 
 
 useEffect(()=>{
@@ -54,30 +53,34 @@ if(locals.locals==undefined){ return <p> Getting locations</p>}
              
             {/* {target.desc} */}
           </div>
-        </InfoWindow>
+
+         </InfoWindow>
       )}
-      </GoogleMap>
-    )
-  }
+    </GoogleMap>
+  );
+}
 
 
 const WrappedMap = withScriptjs(withGoogleMap(Map))
 
+
 function Location() {
   return (
+
     <div>
       <NavBar/>
     <div style={{width: '100vh', height: '100vh', margin: 'auto', marginTop: '75px'}}>
       <h1>Our Locations</h1>
       <WrappedMap 
         googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDJvg5WPlOh_7Y6IHPCItqZTVQTCpC9aqs`}
+
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `400px` }} />}
         mapElement={<div style={{ height: `100%` }} />}
       />
       </div>
     </div>
-  )
+  );
 }
 export default Location;
 

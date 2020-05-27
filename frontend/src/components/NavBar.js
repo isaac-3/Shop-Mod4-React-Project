@@ -6,7 +6,6 @@ import Checkout from './Checkout'
 import Alert from 'react-bootstrap/Alert'
 import ModalModalExample from './Alert'
 
-
 export default class NavBar extends React.Component {
 
 toggleHidden = () => {
@@ -14,18 +13,15 @@ toggleHidden = () => {
     isHidden: !this.state.isHidden
   })
 }
-
 render(){
   let categories=['iPads', 'Tablets', 'Speakers', 'Microphones', 'Cables', 'Mouses', 'Printers', 'Refrigerators', 'Antennas', 'USBs', 'SD Cards', 'PCs', 'Laptops', 'Phones', 'TVs', 'Chargers', 'Extension Cords', 'Stoves', 'Grills', 'Earphones', 'Headphones', 'Cameras', 'Remotes','Phone Cases', 'Laptop Cases', 'Kindles', 'Video Games', 'Smartwatches' ]
   let sorted= categories.sort((a,b) => (a.toLowerCase() > b.toLowerCase()) ? 1 : -1)
 
- 
   console.log(this.props)
   return (
     <nav className="navbar navbar-expand-lg  bg-dark">
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
-
         <li className="nav-item active">
           <Link to='/locations'>
             <a className="nav-link">
@@ -76,7 +72,6 @@ render(){
           </li>
           </Link> 
             } 
-
          <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
@@ -113,9 +108,9 @@ render(){
       </div>
     </nav>
   );
+//   }
+// }
+
   }
 }
-
-
-
 

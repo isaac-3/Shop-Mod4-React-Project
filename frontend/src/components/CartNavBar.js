@@ -13,7 +13,6 @@ render(){
 
   let user = this.props.current_user_id
 
-  console.log(this.props.carts)
 
   return (
     <nav className="navbar navbar-expand-lg  bg-dark">
