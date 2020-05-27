@@ -60,7 +60,9 @@ class Random extends Component {
         this.setState({
           products: result.products,
         });
+
       });
+
   }
 
   getItems = (searchItem) => {
@@ -101,6 +103,10 @@ class Random extends Component {
     if (this.props.location.state != undefined) {
       this.getUser();
     }
+
+  // if(this.props.location.state != undefined){
+  //   this.getUser()
+  // } 
 
     return (
       <div>

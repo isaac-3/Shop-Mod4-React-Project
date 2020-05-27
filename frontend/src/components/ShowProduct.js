@@ -1,6 +1,8 @@
+
 import React, { Component } from "react";
 import CartNavBar from "./CartNavBar";
 import { Carousel, Card, ListGroup } from "react-bootstrap";
+
 
 class ShowProduct extends Component {
   // state = {
@@ -38,6 +40,7 @@ class ShowProduct extends Component {
           current_user_id={this.props.location.state.product.current_user_id}
           carts={this.props.location.state.product.carts}
         />
+
 
         <div className="container row row-cols-1 row-cols-md-2">
           {this.props.location.state.product.image2.length < 45 &&
@@ -119,6 +122,7 @@ class ShowProduct extends Component {
                       }
                     >
                       <i class="fas fa-cart-plus">Add to cart</i>
+
                     </a>
                   </ListGroup.Item>
                 </Card.Body>
