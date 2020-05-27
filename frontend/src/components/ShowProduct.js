@@ -31,6 +31,7 @@ class ShowProduct extends Component {
     // ))
   };
 
+
   render() {
     // console.log(this.props.location.state.product.carts)
     // console.log(this.props.location.state.product.image3.length);
@@ -122,6 +123,7 @@ class ShowProduct extends Component {
                       }
                     >
                       <i class="fas fa-cart-plus">Add to cart</i>
+
 
                     </a>
                   </ListGroup.Item>

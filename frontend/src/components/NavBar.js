@@ -5,7 +5,9 @@ import {Link} from 'react-router-dom'
 import Checkout from './Checkout'
 import Alert from 'react-bootstrap/Alert'
 import ModalModalExample from './Alert'
+
 export default class NavBar extends React.Component {
+
 toggleHidden = () => {
   this.setState({
     isHidden: !this.state.isHidden
@@ -14,6 +16,7 @@ toggleHidden = () => {
 render(){
   let categories=['iPads', 'Tablets', 'Speakers', 'Microphones', 'Cables', 'Mouses', 'Printers', 'Refrigerators', 'Antennas', 'USBs', 'SD Cards', 'PCs', 'Laptops', 'Phones', 'TVs', 'Chargers', 'Extension Cords', 'Stoves', 'Grills', 'Earphones', 'Headphones', 'Cameras', 'Remotes','Phone Cases', 'Laptop Cases', 'Kindles', 'Video Games', 'Smartwatches' ]
   let sorted= categories.sort((a,b) => (a.toLowerCase() > b.toLowerCase()) ? 1 : -1)
+
   console.log(this.props)
   return (
     <nav className="navbar navbar-expand-lg  bg-dark">
@@ -42,6 +45,7 @@ render(){
             </li>
           </Link>
             }
+             
           <li className="nav-item">
             <Link to={{pathname: '/cart',state: {user: this.props.current_user_id, cart: this.props.carts, removeOrder: this.props.removeOrder}}}>
             <a className="nav-link" onClick={()=>(
@@ -104,7 +108,9 @@ render(){
       </div>
     </nav>
   );
+//   }
+// }
+
   }
 }
-  }
-}
+
