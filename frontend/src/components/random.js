@@ -64,6 +64,9 @@ this.getItems(searchTerm)
             products: result.products
           });
         });
+        if(this.props.location.state != undefined){
+          this.getUser()
+        } 
   }
 
 
@@ -98,9 +101,9 @@ this.getItems(searchTerm)
     }else{
       filteredProducts= [{name: 'No product'}]
     }
-  if(this.props.location.state != undefined){
-    this.getUser()
-  } 
+  // if(this.props.location.state != undefined){
+  //   this.getUser()
+  // } 
 
     return (
       <div>

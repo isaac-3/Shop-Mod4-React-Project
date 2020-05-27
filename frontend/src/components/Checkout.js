@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import EditCart from "./EditCart";
-import CartNavBar from './CartNavBar'
+import NavBar from './NavBar'
 
 export default class Checkout extends React.Component {
 
     state = {
         current_cart: this.props.location.state.cart == 1 ? this.props.location.state.cart[0] : this.props.location.state.cart.slice(-1)[0]
     }
+
     purchased = (user_id) => {
         fetch("http://localhost:3000/carts", {
             method: "POST",
@@ -41,28 +42,29 @@ export default class Checkout extends React.Component {
 
     render(){
     let user_id = this.props.location.state.user
-    let totalPrice = this.state.current_cart.orders.map((o) => o.product.price).reduce((a, b) => a + b, 0);
-    console.log(this.props)
+    let totalPrice = this.state.current_cart.orders.map((o) => o.product.price).reduce((a, b) => a + b, 0)
+    console.log(this.props.location.state.cart == 1 ? this.props.location.state.cart[0] : this.props.location.state.cart.slice(-1)[0])
     return (
         <div>
-            <CartNavBar current_user_id={this.props.location.state.user} carts={this.props.location.state.cart}/>
+            <NavBar current_user_id={this.props.location.state.user} carts={this.props.location.state.cart}/>
             <div class="container">
                 <h2>Your Cart</h2>
-                {this.state.current_cart.orders.map((order) => (
+                {/* {this.state.current_cart.orders.map((order) => (
                     <p>
                         {order.product.name}
                         <span>${order.product.price}</span>
                     </p>
-                ))}
+                ))} */}
                 <EditCart cart={this.state.current_cart} orders={this.state.current_cart.orders} removeOrder={this.removeOrder}/>
-                <h4>
+                {/* <h4>
                     Cart
                 <span>
                         <b>
-                            {this.props.location.state.cart.id}
+                            {this.props.location.state.cart.cart}
+                            
                         </b>
                     </span>
-                </h4>
+                </h4> */}
                 {/* {this.state.current_cart.orders.map((order) => (
                     <p>
                         {order.product.name}
