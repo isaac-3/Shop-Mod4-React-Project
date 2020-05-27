@@ -32,10 +32,9 @@ class CartsController < ApplicationController
             user = User.find_by(id: cart.user_id)
             render json: user, :include => [ :carts => {:include => [:orders => {:include => [:product]}]}]
         else
-            del_order = cart.orders.select{|o| o.product_id == params[:order][:id]}.first
+            del_order = cart.orders.select{|o| o.product_id == params[:order][:product_id]}.first
             upd_orders = cart.orders.select{|o| o.product_id != del_order.product_id}
             cart.update_attribute(:orders, upd_orders)
-
             user = User.find_by(id: cart.user_id)
             render json: user, :include => [ :carts => {:include => [:orders => {:include => [:product]}]}]
         end

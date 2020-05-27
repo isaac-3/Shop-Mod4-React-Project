@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CartNavBar from './CartNavBar'
+import NavBar from './NavBar'
 
 class ShowProduct extends Component {
 
@@ -28,7 +28,7 @@ class ShowProduct extends Component {
         console.log(this.props.location.state.product.current_user_id)
         return (
         <div>
-            <CartNavBar current_user_id={this.props.location.state.product.current_user_id} carts={this.props.location.state.product.carts}/>
+            <NavBar current_user_id={this.props.location.state.product.current_user_id} carts={this.props.location.state.product.carts}/>
             <div className="container row row-cols-1 row-cols-md-2">
                 <div id="carouselExampleIndicators" className="carousel slide col mb-2" data-ride="carousel">
                     <ol class="carousel-indicators">
