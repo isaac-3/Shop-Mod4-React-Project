@@ -3,7 +3,7 @@ import { Search } from "./Search";
 import {Login} from './Login'
 import {Link} from 'react-router-dom'
 import Checkout from './Checkout'
-
+import Alert from 'react-bootstrap/Alert'
 
 export default class CartNavBar extends React.Component {
 
@@ -38,7 +38,7 @@ render(){
           <li className="nav-item">
             <Link to={{pathname: '/cart',state: {user: user, cart: this.props.carts, removeOrder: this.props.removeOrder}}}>
             <a className="nav-link" onClick={()=>(
-              this.props.current_user_id ?  alert("hi") :
+              this.props.current_user_id ?  <Alert> Hi </Alert> :
               alert("Please log in to see past orders")
             )}>
               Past Orders

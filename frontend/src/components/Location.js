@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow} from 'react-google-maps'
 import NavBar from './NavBar';
 
@@ -7,46 +7,59 @@ function Map(){
   
     const [target, setTarget] = useState(null)
 
-    const locals = [
-      {
-        id: 1,
-        lat: 29.760427,
-        lng:-95.369804,
-        desc: 'rafa'
-      },
-      {
-        id: 2,
-        lat: 29.691063,
-        lng: -95.209099,
-        desc: 'melike'
-      },
-      {
-        id: 3,
-        lat: 29.704479,
-        lng: -95.455437,
-        desc: 'isaac'
-      }
-    ]
-  
+    const [locals, setLocals]= useState([])
+
+
+useEffect(()=>{
+    fetch("https://target-com-store-product-reviews-locations-data.p.rapidapi.com/location/search?radius=100&zip=77021", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "target-com-store-product-reviews-locations-data.p.rapidapi.com",
+		"x-rapidapi-key": "31c5440035mshf5daeac1b76e139p1eb9b1jsn956d499e0482"
+	}
+})
+
+
+.then(response => {
+	return response.json()
+})
+.then(err => (
+  // console.log(err)
+  setLocals({locals:err.locations})
+))
+},[])  
+
+console.log(locals)
+if(locals.locals==undefined){ return <p> Getting locations</p>}
     return(
       <GoogleMap 
         defaultZoom={10}
         defaultCenter={{lat: 29.760427, lng: -95.369804}}
       >
-      {locals.map(loc => (
-        <Marker key={loc.id} position={{lat: loc.lat, lng: loc.lng}} onClick={() => {setTarget(loc)}}
-        icon={{url: 'https://1000logos.net/wp-content/uploads/2017/06/target-logo-transparent.png', scaledSize: new window.google.maps.Size(25,25)}}/>
+      {locals.locals.map(loc => (
+        // console.log(loc)
+        <Marker key={loc.location_id} position={{lat: loc.geographic_specifications.latitude, lng: loc.geographic_specifications.longitude}} onClick={() => {setTarget(loc)}}
+        icon={{url: "https://img.icons8.com/office/30/000000/address.png", scaledSize: new window.google.maps.Size(20,20)}}/>
       ))}
       {target && (
-        <InfoWindow position={{lat: target.lat, lng: target.lng}} onCloseClick={() => {setTarget(null)}}>
+        <InfoWindow position={{lat: target.geographic_specifications.latitude, lng: target.geographic_specifications.longitude}} onCloseClick={() => {setTarget(null)}}>
           <div>
-            {target.desc}
+
+             {target.location_names[0].name} <br/>
+             {target.address.address_line1} <br/>
+             {target.address.city} <br/>
+             {target.address.state} <br/>
+             {target.address.postal_code} <br/>
+           
+             
+            {/* {target.desc} */}
           </div>
         </InfoWindow>
       )}
       </GoogleMap>
     )
   }
+
 
 const WrappedMap = withScriptjs(withGoogleMap(Map))
 
@@ -67,3 +80,7 @@ function Location() {
   )
 }
 export default Location;
+
+
+
+
