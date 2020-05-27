@@ -42,7 +42,7 @@ class Random extends Component {
 
   componentDidMount() {
     fetch(
-      "https://target-com-store-product-reviews-locations-data.p.rapidapi.com/product/search?sponsored=1&limit=50&offset=0&store_id=3991&keyword=popular",
+      "https://target-com-store-product-reviews-locations-data.p.rapidapi.com/product/search?sponsored=1&limit=50&offset=0&store_id=3991&keyword=tv",
       {
         method: "GET",
         headers: {
