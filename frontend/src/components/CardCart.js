@@ -2,8 +2,6 @@ import React, { Component } from "react";
 
 class CardCart extends Component {
   render() {
-    // console.log(this.props.price)
-    // console.log(this.props.price.current_retail)
     return (
       <div className="col mb-4">
         <div class="card" style={{ width: "18rem" }}>
@@ -15,9 +13,10 @@ class CardCart extends Component {
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
               Price:
-              {this.props.price != null
+              {/* {this.props.price != null
                 ? this.props.price.current_retail
-                : this.props.price}
+                : this.props.price} */}
+              {this.props.price}
             </li>
             <li class="list-group-item">OTHER STUFF</li>
             <li class="list-group-item">OTHER STUFF</li>
@@ -26,7 +25,7 @@ class CardCart extends Component {
             <button type="button" class="btn btn-primary mr-2">
               See more...
             </button>
-            <button type="button" class="btn btn-danger mr-2 md-">
+            <button type="button" class="btn btn-danger mr-2 md-" onClick={() => this.props.removeOrder(this.props.order)}>
               Remove
             </button>
           </div>

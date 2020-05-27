@@ -17,7 +17,7 @@ class App extends React.Component {
   
   render() {
     return (
-      <div>
+      <div style={{"background-color" : "rgb(208, 228, 245)"}}>
   
         <BrowserRouter>
           <Switch>
