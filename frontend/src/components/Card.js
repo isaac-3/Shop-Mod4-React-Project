@@ -9,7 +9,6 @@ class Card extends Component {
     // console.log(this.props)
 
     addToCart = (prod) => {
-    // console.log(prod)
       let newProd = {title: prod.title, price: prod.price, description: prod.description, image: prod.image}
       let current_cart = prod.carts.length == 1 ?  prod.carts[0] : prod.carts.slice(-1)[0]
       console.log(current_cart)
@@ -21,13 +20,8 @@ class Card extends Component {
               newProd: newProd
           })
       })
-      .then(res => res.json())
-      .then(x => (
-          this.setState
-      ))
-  }
+    }
   render() {
-    // console.log(this.props)
     return (
       <div className="col mb-4">
         <div class="card" style={{ width: "18rem" }}>
