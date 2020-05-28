@@ -234,6 +234,7 @@ export default class Checkout extends React.Component {
                           required
                         />
                       </div>
+
                     </div>
                   </div>
                   <div class="form-group">
@@ -248,9 +249,11 @@ export default class Checkout extends React.Component {
                           label="Agree to terms and conditions"
                           feedback="You must agree before submitting."
                         />
+                        <div class= "text-left">
                         <label class="form-check-label" for="invalidCheck2">
                           Agree to terms and conditions
                         </label>
+      
                       </div>
                       <br />
                       <div class="text-left">
@@ -262,6 +265,7 @@ export default class Checkout extends React.Component {
                           Purchase
                         </button>
                       </div>
+
                     </div>
                   </div>
                 </div>
@@ -273,3 +277,4 @@ export default class Checkout extends React.Component {
     );
   }
 }
+

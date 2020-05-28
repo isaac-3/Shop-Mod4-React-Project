@@ -5,6 +5,8 @@ import { Category } from "./Category";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 
+
+
 class Random extends Component {
   state = {
     products: [],
@@ -42,7 +44,7 @@ class Random extends Component {
 
   componentDidMount() {
     fetch(
-      "https://target-com-store-product-reviews-locations-data.p.rapidapi.com/product/search?sponsored=1&limit=50&offset=0&store_id=3991&keyword=tv",
+      "https://target-com-store-product-reviews-locations-data.p.rapidapi.com/product/search?sponsored=1&limit=50&offset=0&store_id=3991&keyword=popular",
       {
         method: "GET",
         headers: {
@@ -62,7 +64,9 @@ class Random extends Component {
         });
 
       });
-
+      if(this.props.location.state != undefined){
+        this.getUser()
+      } 
   }
 
   getItems = (searchItem) => {
@@ -89,6 +93,7 @@ class Random extends Component {
   };
 
   render() {
+    // console.log(this.state.products)
     // console.log(this.props)
     let filteredProducts = [];
     if (this.state.products) {
@@ -100,9 +105,9 @@ class Random extends Component {
     } else {
       filteredProducts = [{ name: "No product" }];
     }
-    if (this.props.location.state != undefined) {
-      this.getUser();
-    }
+    // if (this.props.location.state != undefined) {
+    //   this.getUser();
+    // }
 
   // if(this.props.location.state != undefined){
   //   this.getUser()
@@ -121,6 +126,8 @@ class Random extends Component {
           current_user_id={this.props.location.state}
           carts={this.state.carts}
         />
+        
+       
       </div>
     );
   }
