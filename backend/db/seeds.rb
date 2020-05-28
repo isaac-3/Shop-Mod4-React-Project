@@ -11,6 +11,7 @@ response = Unirest.get "https://target-com-store-product-reviews-locations-data.
     "X-RapidAPI-Key" => "31c5440035mshf5daeac1b76e139p1eb9b1jsn956d499e0482"
   }
 
+
 products = response.body["products"]
 # image ="#{products[0]["images"][0]["base_url"]}" + "#{products[0]["images"][0]["primary"]}"
 
