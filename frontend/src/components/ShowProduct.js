@@ -126,12 +126,12 @@ console.log(this.props.location.state.product)
                 </Card.Body>
               </ListGroup>
               <h3>Reviews</h3>
-            <p>
+           
             { this.props.location.state.product.reviews.length==0 ? "No reviews"  :
-                 this.props.location.state.product.reviews.map(review=> (review.review_text))
+                 this.props.location.state.product.reviews.map((review,index)=>  (<p> {index+1}. {review.review_text}</p> ))  
                
                 }
-                    </p> 
+                   
             </Card>
           
   
