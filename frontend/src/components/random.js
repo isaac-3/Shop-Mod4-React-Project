@@ -65,9 +65,11 @@ class Random extends Component {
         });
 
       });
-      if (this.props.location.state != undefined) {
-        this.getUser();
-      }
+
+      if(this.props.location.state != undefined){
+        this.getUser()
+      } 
+
   }
 
   getItems = (searchItem) => {
@@ -106,7 +108,7 @@ class Random extends Component {
     } else {
       filteredProducts = [{ name: "No product" }];
     }
-   
+
 
   // if(this.props.location.state != undefined){
   //   this.getUser()
