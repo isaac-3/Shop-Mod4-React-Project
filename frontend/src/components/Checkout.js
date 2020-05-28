@@ -269,6 +269,7 @@ export default class Checkout extends React.Component {
                     </div>
                   </div>
                 </div>
+                </div>
               </form>
             </Col>
           </Row>
