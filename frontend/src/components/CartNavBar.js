@@ -3,7 +3,7 @@ import { Search } from "./Search";
 import {Login} from './Login'
 import {Link} from 'react-router-dom'
 import Checkout from './Checkout'
-import Alert from 'react-bootstrap/Alert'
+
 
 export default class CartNavBar extends React.Component {
 

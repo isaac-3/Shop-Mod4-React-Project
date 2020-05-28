@@ -26,6 +26,7 @@ export default class NavBar extends React.Component {
     })
   };
 
+
   render() {
     let categories = [
       "iPads",
@@ -63,19 +64,18 @@ export default class NavBar extends React.Component {
 
     console.log(this.props);
     return (
-      <nav className="navbar navbar-expand-lg navbar navbar-dark bg-info">
+      <nav style={{"font-weight": "bold", "font-family": "Verdana"}}
+      className="navbar navbar-expand-lg navbar navbar-dark bg-info">
+       
         <div class="container-fluid">
+        <ul className="navbar-nav mr-auto">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-              Shop My Shit
-            </a>
-          </div>
-          <ul className="navbar-nav mr-auto">
-            {this.props.current_user_id == undefined ? (
+         
+          {this.props.current_user_id == undefined ? (
               <Link to="/">
                 <li className="nav-item active">
                   <a className="nav-link">
-                    Home <span className="sr-only">(current)</span>
+                  Shoptastic <span className="sr-only">(current)</span>
                   </a>
                 </li>
               </Link>
@@ -88,11 +88,15 @@ export default class NavBar extends React.Component {
               >
                 <li className="nav-item active">
                   <a className="nav-link">
-                    Home <span className="sr-only">(current)</span>
+                 Shoptastic <span className="sr-only">(current)</span>
                   </a>
                 </li>
               </Link>
             )}
+       
+          </div>
+          
+          
 
             <li className="nav-item">
              
@@ -119,9 +123,13 @@ export default class NavBar extends React.Component {
                     <div className="popup">
                       {/* <h2>Here i am</h2> */}
                       <a className="close" onClick={()=> this.toggleButton()} >
-                        &times;
+                      <br/>
+                      
+                      
+                       &times;
                       </a>
-                      <div className="content">
+                    
+                      <div style={{"font-family": "Verdana"}} className="content">
                         You are not logged in. Please log in to see your past orders.
                       </div>
                      
@@ -164,6 +172,9 @@ export default class NavBar extends React.Component {
               </Link>
             </li>
 
+
+            <li className="nav-item">
+{this.props.current_user_id ? (
             <Link
               to={{
                 pathname: "/checkout",
@@ -172,30 +183,37 @@ export default class NavBar extends React.Component {
                   cart: this.props.carts,
                 },
               }}
-            >
-              <li className="nav-item">
-                <a
-                  className="btn btn-light"
-                  onClick={() =>
-                    this.props.current_user_id
-                      ? alert("hi")
-                      : alert(
-                          "Since you are not logged in, you can't checkout. Please log in."
-                        )
-                  }
-                >
-                  <i className="fas fa-shopping-cart text-dark">Checkout</i>
-                </a>
-              </li>
-            </Link>
+            > <a
+                  className="btn btn-light"  > <i className="fas fa-shopping-cart text-dark">
+                    Checkout</i>
+                    </a>
+                    </Link>) : (
+                        <div >
+    <a  className="btn btn-light" onClick={()=>this.toggleHidden()}>
+    <i className="fas fa-shopping-cart text-dark">
+                    Checkout</i>
+    </a>
+    <div className={this.state.active===true ? "overlay active" : "overlay "}> 
+    
+      <div className="popup">
+        <a className="close" onClick={()=> this.toggleButton()} >
+          &times;
+        </a>
+        <div style={{"font-family": "Verdana"}}  className="content">
+          You are not logged in. Please log in to see your past orders.
+        </div>
+       
+      </div>
+    </div>
+  </div>
+) }
+ </li>
+           
           </ul>
+
           <Search searchItem={this.props.searchItem} />
           <ul class="nav navbar-nav navbar-right">
-            {/* <li>
-      a href="#">
-      <span class="glyphicon glyphicon-user"></span> 
-      Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> */}
+          
 
             {this.props.current_user_id === undefined ? (
               <Link to="/login">
