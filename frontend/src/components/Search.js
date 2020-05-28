@@ -12,6 +12,7 @@ export const Search = (props) => {
                 placeholder="Search"
                 aria-label="Search"
                 name="search"
+                placeholder="Search An Item"
                 onChange={(e) => props.searchItem(e)}
             />
 
