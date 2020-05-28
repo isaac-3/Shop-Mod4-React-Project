@@ -2,17 +2,14 @@ import React, {useState, useEffect} from 'react';
 import {GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow} from 'react-google-maps'
 import NavBar from './NavBar';
 import { LocationInput } from './LocationInput';
-
-
+import {SearchLocation} from './SearchLocation'
+import LocationTable from './LocationTable'
 function Map() {
     let [target, setTarget] = useState(null);
     let [locals, setLocals]= useState([])
     let [zip, setZip] = useState("")
     // const [zipSearch, setZipSearch] = useState("")
-    
     let [defCenter, setCenter] = useState({})
-
-    
     useEffect(()=>{
       fetch("https://target-com-store-product-reviews-locations-data.p.rapidapi.com/location/search?radius=100&zip=77021", {
         "method": "GET",
@@ -28,14 +25,12 @@ function Map() {
         setLocals({locals:err.locations})
         ))
       },[])
-
       let searchLoc = (zip) => {
         // console.log(zip)
         // setZipSearch({zipSearch: zip.zip})
         getLocations(zip)
         // getDefCenter(zip.zip)
       }
-
     let getLocations = (zip) => {
       fetch(`https://target-com-store-product-reviews-locations-data.p.rapidapi.com/location/search?radius=100&zip=${zip}`, {
         "method": "GET",
@@ -51,16 +46,14 @@ function Map() {
         setLocals({locals: err.locations})
       ))
     }
-
-    useEffect(()=>{
-      fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=77001&key=${process.env.REACT_APP_GOOGLE_KEY}`)
-      .then(res => res.json())
-      .then(err => (
-        // console.log(err.results[0].geometry.location)
-        setCenter({defCenter: err.results[0].geometry.location})
-        ))
-      },[])
-
+    // useEffect(()=>{
+    //   fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=77001&key=${process.env.REACT_APP_GOOGLE_KEY}`)
+    //   .then(res => res.json())
+    //   .then(err => (
+    //     // console.log(err.results[0].geometry.location)
+    //     // setCenter({defCenter: err.results[0].geometry.location})
+    //     ))
+    //   },[])
     let getDefCenter = (zip) => {
       fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${zip}&key=${process.env.REACT_APP_GOOGLE_KEY}`)
       .then(res => res.json())
@@ -69,14 +62,12 @@ function Map() {
         setCenter({defCenter: err.results[0].geometry.location})
         ))
     }
-
     if(locals.locals==undefined){ return <p> Getting locations</p>}
-
     return(
       <div>
             <GoogleMap 
               defaultZoom={10}
-              defaultCenter={defCenter.defCenter}
+              defaultCenter={{lat:29.7604, lng: -95.3698}}
             >
               {locals.locals.map(loc => (
                 <Marker key={loc.location_id} position={{lat: loc.geographic_specifications.latitude, lng: loc.geographic_specifications.longitude}} onClick={() => {setTarget(loc)}}
@@ -85,11 +76,16 @@ function Map() {
               {target && (
                 <InfoWindow position={{lat: target.geographic_specifications.latitude, lng: target.geographic_specifications.longitude}} onCloseClick={() => {setTarget(null)}}>
                   <div>
-                    {target.location_names[0].name} <br/>
-                    {target.address.address_line1} <br/>
-                    {target.address.city} <br/>
-                    {target.address.state} <br/>
-                    {target.address.postal_code} <br/>
+                  <a
+                    href={`https://maps.google.com/maps/search/?api=1&query=${target.geographic_specifications.latitude},${target.geographic_specifications.longitude}`}
+                  >
+                    {target.location_names[0].name} <br />
+                    {target.address.address_line1} <br />
+                    {target.address.city} <br />
+                    {target.address.state} <br />
+                    {target.address.postal_code} <br />
+                    {/* {target.desc} */}
+                  </a>
                   </div>
                 </InfoWindow>
               )}
@@ -103,13 +99,10 @@ function Map() {
       </div>
     )
 }
-
 const WrappedMap = withScriptjs(withGoogleMap(Map));
-
 function Location() {
   return (
     <div>
-
       <NavBar />
       <div
         style={{
@@ -130,8 +123,7 @@ function Location() {
         <br />
         <br />
         <div>
-          <h5>Search:</h5>
-        <SearchLocation />
+         
         </div>
         <LocationTable border="secondary" />
       </div>
