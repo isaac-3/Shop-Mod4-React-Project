@@ -1,10 +1,10 @@
 import React from 'react';
-import CartProduct from './CartProduct';
+import PrevCardProducts from './PrevCardProducts';
 
 export default function Order(props){
     return(
         <div>
-            <CartProduct product={props.product}/>
+            <PrevCardProducts product={props.product}/>
         </div>
     )
 }

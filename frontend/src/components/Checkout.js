@@ -48,7 +48,7 @@ export default class Checkout extends React.Component {
         <div>
             <NavBar current_user_id={this.props.location.state.user} carts={this.props.location.state.cart}/>
             <div class="container">
-                <h2>Your Cart</h2>
+                <h1>Order Summary</h1>
                 {/* {this.state.current_cart.orders.map((order) => (
                     <p>
                         {order.product.name}
@@ -71,73 +71,74 @@ export default class Checkout extends React.Component {
                         <span>${order.product.price}</span>
                     </p>
                 ))} */}
-                <hr />
-                <p>
-                    Total{" "}
+                {/* <hr /> */}
+                <br/>
+                <h4>
+                    Order Total{" "}: $
                     <span>
                         <b>{totalPrice}</b>
                     </span>
-                </p>
+                </h4>
             </div>
             <form>
-                <h2>
+                <h2 class="text-left">
                     Billing Address <i class="fas fa-home fa-sm"> </i>
                 </h2>
-                <div class="form-row">
-                    <div class="col-md-4 mb-3">
+                <div class="form-group col-md-6">
+                    <div class="col-md-6 mb-3">
                         <label for="validationDefault01">Full Name</label>
                         <input
                             type="text"
                             class="form-control"
                             id="fname"
-                            placeholder="John M. Doe"
+                            placeholder="Full Name"
                             name="firstname"
                             required
                         />
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-6 mb-3">
                         <label for="validationDefault02">Email</label>
                         <input
                             type="text"
                             name="email"
                             class="form-control"
                             id="email"
-                            placeholder="john@example.com"
+                            placeholder="Email"
                             required
                         />
                     </div>
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-6 mb-3">
                         <label for="validationDefaultUsername">City</label>
                         <div class="input-group">
-                            <div class="input-group-prepend">
+                            {/* <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroupPrepend2"></span>
-                            </div>
+                            </div> */}
                             <input
                                 type="text"
                                 id="city"
                                 name="city"
                                 class="form-control"
                                 id="validationDefaultUsername"
-                                placeholder="Houston"
+                                placeholder="City"
                                 aria-describedby="inputGroupPrepend2"
                                 required
                             />
                         </div>
                     </div>
                 </div>
-                <div class="form-row">
+                    <div class="form-group col-md-6">
                     <div class="col-md-6 mb-3">
                         <label for="validationDefault03">Address</label>
                         <input
                             type="text"
                             class="form-control"
                             id="adr"
-                            placeholder="542 W. 15th Street"
+                            placeholder="Address"
                             name="address"
                             required
                         />
                     </div>
-                    <div class="col-md-3 mb-3">
+                    <div class="form-group col-md-6">
                         <label for="validationDefault04">State</label>
                         <input
                             type="text"
@@ -147,7 +148,7 @@ export default class Checkout extends React.Component {
                             required
                         />
                     </div>
-                    <div class="col-md-3 mb-3">
+                    <div class="form-group col-md-6">
                         <label for="validationDefault05">Zip</label>
                         <input
                             type="text"
@@ -159,62 +160,64 @@ export default class Checkout extends React.Component {
                         />
                     </div>
                 </div>
-                <h2>
+                <h2 class="text-left">
                     Payment Information <i class="fab fa-cc-visa mr-2"></i>
                     <i class="fab fa-cc-mastercard mr-2"></i>
                 </h2>
-                <div class="form-row">
+                <div class="form-group col-md-6">
                     <div class="col-md-4 mb-3">
                         <label for="validationDefault01">Name On Card</label>
                         <input
                             type="text"
-                            class="form-control"
+                            class="form-control "
                             id="cname"
-                            placeholder="John M. Doe"
+                            // placeholder="Name On Card"
                             name="cardname"
                             required
+                        
                         />
                     </div>
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-4 mb-6">
                         <label for="validationDefault02">Credit Card Number</label>
                         <input
                             type="text"
                             id="ccnum"
                             class="form-control"
                             id="validationDefault02"
-                            name="cardnumber"
+                            // placeholder="Credit Card Number"
+                            name="Credit Card Number"
                             required
                         />
                     </div>
-                    <div class="col-md-1 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label for="validationDefaultUsername">Exp.Date</label>
                         <div class="input-group">
-                            <div class="input-group-prepend">
+                            {/* <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroupPrepend2"></span>
-                            </div>
+                            </div> */}
                             <input
                                 type="text"
                                 class="form-control"
                                 id="expd"
-                                placeholder="03/09"
+                                // placeholder="03/09"
                                 aria-describedby="inputGroupPrepend2"
                                 name="expirationd"
                                 required
                             />
                         </div>
                     </div>
-                    <div class="col-md-1 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label for="validationDefaultUsername">CVV</label>
                         <div class="input-group">
-                            <div class="input-group-prepend">
+                            {/* <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroupPrepend2"></span>
-                            </div>
+                            </div> */}
                             <input
                                 type="text"
                                 class="form-control"
                                 id="cvvid"
                                 name="cvv"
-                                placeholder="521"
+                                // placeholder="521"
                                 aria-describedby="inputGroupPrepend2"
                                 required
                             />
@@ -230,14 +233,18 @@ export default class Checkout extends React.Component {
                             id="invalidCheck2"
                             required
                         />
+                        <div class= "text-left">
                         <label class="form-check-label" for="invalidCheck2">
                             Agree to terms and conditions
                         </label>
+                        </div>
                     </div>
                 </div>
+                <div class="text-left">
                 <button class="btn btn-primary" type="submit" onClick={() => this.purchased(user_id)}>
                     Purchase
                 </button>
+                </div>
             </form>
         </div>
     )
