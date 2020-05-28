@@ -62,7 +62,7 @@ export function Login(props) {
             type="text"
             value={user.username}
             onChange={(e) => changeUser({ ...user, username: e.target.value })}
-            placeholder="Trello_342"
+            placeholder="Username"
           />
         </div>
         <div class="form-group">
@@ -94,12 +94,13 @@ export function Login(props) {
               onChange={(e) =>
                 changeNewUser({ ...new_user, new_username: e.target.value })
               }
-              placeholder="MyName123"
+              placeholder="Username"
             />
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password </label>
-            <input
+            <input 
+            
               className="ml-1"
               type="password"
               value={new_user.new_password}
@@ -118,7 +119,7 @@ export function Login(props) {
               onChange={(e) =>
                 changeNewUser({ ...new_user, new_address: e.target.value })
               }
-              placeholder="Your address"
+              placeholder="Address"
             />
           </div>
           <div class="form-group ml-3">
@@ -130,7 +131,7 @@ export function Login(props) {
               onChange={(e) =>
                 changeNewUser({ ...new_user, new_email: e.target.value })
               }
-              placeholder="imawesome@example.com"
+              placeholder="Email"
             />
           </div>
           <button input="submit" class="btn btn-primary">

@@ -12,6 +12,8 @@ import Checkout from "./components/Checkout";
 import PrevCarts from './components/PrevCarts';
 import ShowProduct from './components/ShowProduct'
 import Location from './components/Location'
+import PrevCartProducts from './components/PrevCardProducts'
+
 
 class App extends React.Component {
   
@@ -24,7 +26,6 @@ class App extends React.Component {
             <Route exact path="/login" component={Login} />
             <Route exact path= "/" component={Random} />
             <Route exact path='/locations' component={Location}/>
-            {/* <Route exact path="/cart" component={Header} /> */}
             <Route exact path='/show' component={ShowProduct}/>
             <Route exact path="/cart" component={PrevCarts} />
             <Route exact path="/checkout" component={Checkout} />
