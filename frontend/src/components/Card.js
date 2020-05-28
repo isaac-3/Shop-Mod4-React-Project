@@ -3,10 +3,7 @@ import { Link } from "react-router-dom";
 import ShowProduct from "./ShowProduct";
 
 class Card extends Component {
- 
- 
-    // console.log(this.props.price.current_retail)
-    // console.log(this.props)
+
 
     addToCart = (prod) => {
     // console.log(prod)
@@ -21,13 +18,10 @@ class Card extends Component {
               newProd: newProd
           })
       })
-      .then(res => res.json())
-      .then(x => (
-          this.setState
-      ))
   }
   render() {
-    // console.log(this.props)
+console.log(this.props.price)
+   
     return (
       <div className="col mb-4">
         <div class="card" style={{ width: "18rem" }}>
@@ -40,10 +34,15 @@ class Card extends Component {
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-              Price: $
-              {this.props.price != null
-                ? this.props.price.current_retail
-                : this.props.price}
+              Price: $ 
+               {this.props.price.current_retail == undefined
+                ? 
+                this.props.price.current_retail_max
+                : 
+                this.props.price.current_retail
+                
+                } 
+              
             </li>
           </ul>
           <div class="card-body">
@@ -53,7 +52,7 @@ class Card extends Component {
               See more...
             </button>
           </Link>
-
+            
             <a class="btn btn-warning" onClick={() => this.addToCart(this.props)}>
 
               <i class="fas fa-cart-plus">Add to cart</i>

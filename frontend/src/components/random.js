@@ -43,6 +43,7 @@ class Random extends Component {
   };
 
   componentDidMount() {
+    
     fetch(
       "https://target-com-store-product-reviews-locations-data.p.rapidapi.com/product/search?sponsored=1&limit=50&offset=0&store_id=3991&keyword=popular",
       {
@@ -64,7 +65,9 @@ class Random extends Component {
         });
 
       });
-
+      if (this.props.location.state != undefined) {
+        this.getUser();
+      }
   }
 
   getItems = (searchItem) => {
@@ -103,9 +106,7 @@ class Random extends Component {
     } else {
       filteredProducts = [{ name: "No product" }];
     }
-    if (this.props.location.state != undefined) {
-      this.getUser();
-    }
+   
 
   // if(this.props.location.state != undefined){
   //   this.getUser()

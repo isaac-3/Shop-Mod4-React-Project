@@ -1,6 +1,6 @@
 
 import React, { Component } from "react";
-import CartNavBar from "./CartNavBar";
+import NavBar from "./NavBar";
 import { Carousel, Card, ListGroup } from "react-bootstrap";
 
 
@@ -8,6 +8,7 @@ class ShowProduct extends Component {
   // state = {
   //     user: this.props.location.state.product.user
   // }
+
   addToCart = (prod) => {
     let newProd = {
       title: prod.title,
@@ -25,24 +26,19 @@ class ShowProduct extends Component {
         newProd: newProd,
       }),
     });
-    // .then(res => res.json())
-    // .then(x => (
-    //     this.setState
-    // ))
   };
 
 
   render() {
-    // console.log(this.props.location.state.product.carts)
-    // console.log(this.props.location.state.product.image3.length);
+    // console.log(this.props.location.state.product.reviews[1].review_text)
+// this.props.reviews.map(review => (review))
+console.log(this.props.location.state.product)
     return (
       <div>
-        <CartNavBar
+        <NavBar
           current_user_id={this.props.location.state.product.current_user_id}
           carts={this.props.location.state.product.carts}
         />
-
-
         <div className="container row row-cols-1 row-cols-md-2">
           {this.props.location.state.product.image2.length < 45 &&
           this.props.location.state.product.image3.length < 45 ? (
@@ -129,8 +125,19 @@ class ShowProduct extends Component {
                   </ListGroup.Item>
                 </Card.Body>
               </ListGroup>
+              <h3>Reviews</h3>
+            <p>
+            { this.props.location.state.product.reviews.length==0 ? "No reviews"  :
+                 this.props.location.state.product.reviews.map(review=> (review.review_text))
+               
+                }
+                    </p> 
             </Card>
+          
+  
           </div>
+
+
         </div>
       </div>
     );
