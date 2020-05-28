@@ -118,7 +118,7 @@ function Location() {
         <br />
         <div>
           <h5>Search:</h5>
-          <SearchLocation />
+        <SearchLocation />
         </div>
         <LocationTable border="secondary" />
       </div>
