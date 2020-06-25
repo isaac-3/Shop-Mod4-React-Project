@@ -10,6 +10,7 @@ import NavBar from "./NavBar";
 import { LocationInput } from "./LocationInput";
 import { SearchLocation } from "./SearchLocation";
 import LocationTable from "./LocationTable";
+
 function Map() {
   let [target, setTarget] = useState(null);
   let [locals, setLocals] = useState([]);
@@ -79,6 +80,7 @@ function Map() {
   if (locals.locals == undefined) {
     return <p> Getting locations</p>;
   }
+
   return (
     <div>
       <GoogleMap
@@ -136,10 +138,27 @@ function Map() {
   );
 }
 const WrappedMap = withScriptjs(withGoogleMap(Map));
-function Location() {
+
+function Location(props) {
+  let [carts, setCart] = useState([]);
+
+  useEffect(() => {
+    // let getUser = () => {
+    fetch(`http://localhost:3000/users/${props.location.state.user}`)
+      .then((res) => res.json())
+      .then((user) =>
+        setCart({
+          carts: user.carts,
+        })
+      );
+    // };
+  }, []);
+
+  console.log(localStorage.id);
+
   return (
     <div>
-      <NavBar />
+      <NavBar current_user_id={localStorage.id} carts={carts.carts} />
       <div
         style={{
           width: "100vh",

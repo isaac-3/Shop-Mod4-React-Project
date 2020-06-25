@@ -59,7 +59,7 @@ export default class NavBar extends React.Component {
       a.toLowerCase() > b.toLowerCase() ? 1 : -1
     );
 
-    console.log(window.location.href);
+    console.log(localStorage);
 
     return (
       <nav
@@ -174,7 +174,14 @@ export default class NavBar extends React.Component {
             </li>
 
             <li className="nav-item active">
-              <Link to="/locations">
+              <Link
+                to={{
+                  pathname: "/locations",
+                  state: {
+                    user: localStorage.id,
+                  },
+                }}
+              >
                 <a className="nav-link">Locations</a>
               </Link>
             </li>
@@ -240,7 +247,7 @@ export default class NavBar extends React.Component {
                 </li>
               </Link>
             ) : (
-              <Link to="/">
+              <Link to="/" onClick={() => localStorage.clear()}>
                 <li className="nav-item">
                   <a className="nav-link">Log Out</a>
                 </li>
