@@ -5,8 +5,6 @@ import { Category } from "./Category";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 
-
-
 class Random extends Component {
   state = {
     products: [],
@@ -43,7 +41,6 @@ class Random extends Component {
   };
 
   componentDidMount() {
-    
     fetch(
       "https://target-com-store-product-reviews-locations-data.p.rapidapi.com/product/search?sponsored=1&limit=50&offset=0&store_id=3991&keyword=popular",
       {
@@ -63,13 +60,11 @@ class Random extends Component {
         this.setState({
           products: result.products,
         });
-
       });
 
-      if(this.props.location.state != undefined){
-        this.getUser()
-      } 
-
+    if (this.props.location.state != undefined) {
+      this.getUser();
+    }
   }
 
   getItems = (searchItem) => {
@@ -109,10 +104,9 @@ class Random extends Component {
       filteredProducts = [{ name: "No product" }];
     }
 
-
-  // if(this.props.location.state != undefined){
-  //   this.getUser()
-  // } 
+    // if(this.props.location.state != undefined){
+    //   this.getUser()
+    // }
 
     return (
       <div>
@@ -127,8 +121,6 @@ class Random extends Component {
           current_user_id={this.props.location.state}
           carts={this.state.carts}
         />
-        
-       
       </div>
     );
   }
