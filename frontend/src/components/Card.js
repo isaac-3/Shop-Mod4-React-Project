@@ -3,25 +3,27 @@ import { Link } from "react-router-dom";
 import ShowProduct from "./ShowProduct";
 
 class Card extends Component {
+  addToCart = (prod) => {
+    let newProd = {
+      title: prod.title,
+      price: prod.price,
+      description: prod.description,
+      image: prod.image,
+    };
+    let current_cart =
+      prod.carts.length == 1 ? prod.carts[0] : prod.carts.slice(-1)[0];
+    console.log(current_cart);
+    fetch(`http://localhost:3000/carts/${current_cart.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user_id: current_cart.user_id,
+        newProd: newProd,
+      }),
+    });
+  };
 
-
-    addToCart = (prod) => {
-      let newProd = {title: prod.title, price: prod.price, description: prod.description, image: prod.image}
-      let current_cart = prod.carts.length == 1 ?  prod.carts[0] : prod.carts.slice(-1)[0]
-      console.log(current_cart)
-      fetch(`http://localhost:3000/carts/${current_cart.id}`,{
-          method: 'PATCH',
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-              user_id: current_cart.user_id,
-              newProd: newProd
-          })
-      })
-
-  }
- 
   render() {
-
     return (
       <div className="col mb-4">
         <div class="card" style={{ width: "18rem" }}>
@@ -34,27 +36,23 @@ class Card extends Component {
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-              Price: $ 
-               {this.props.price.current_retail == undefined
-                ? 
-                this.props.price.current_retail_max
-                : 
-                this.props.price.current_retail
-                
-                } 
-              
+              Price: $
+              {this.props.price.current_retail == undefined
+                ? this.props.price.current_retail_max
+                : this.props.price.current_retail}
             </li>
           </ul>
           <div class="card-body">
-      
-          <Link to={{pathname: '/show',state: {product: this.props}}}>
-            <button type="button" class="btn btn-primary mr-2">
-              See more...
-            </button>
-          </Link>
-            
-            <a class="btn btn-warning" onClick={() => this.addToCart(this.props)}>
+            <Link to={{ pathname: "/show", state: { product: this.props } }}>
+              <button type="button" class="btn btn-primary mr-2">
+                See more...
+              </button>
+            </Link>
 
+            <a
+              class="btn btn-warning"
+              onClick={() => this.addToCart(this.props)}
+            >
               <i class="fas fa-cart-plus">Add to cart</i>
             </a>
           </div>

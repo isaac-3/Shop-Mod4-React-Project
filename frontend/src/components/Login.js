@@ -26,7 +26,8 @@ export function Login(props) {
     });
     let { success, id } = await response.json();
     if (success) {
-      props.history.push("/home", id);
+      localStorage.id = id;
+      props.history.push("/", id);
     } else {
       alert("incorrect");
     }
@@ -46,7 +47,7 @@ export function Login(props) {
     });
     let { success, id } = await response.json();
     if (success) {
-      props.history.push("/home", id);
+      props.history.push("/", id);
     } else {
       alert("taken username");
     }
@@ -99,8 +100,7 @@ export function Login(props) {
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password </label>
-            <input 
-            
+            <input
               className="ml-1"
               type="password"
               value={new_user.new_password}
