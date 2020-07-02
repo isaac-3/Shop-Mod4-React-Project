@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-import ShowProduct from "./ShowProduct"
-import {Link} from 'react-router-dom'
-
+import ShowProduct from "./ShowProduct";
+import { Link } from "react-router-dom";
 
 class CardCart extends Component {
-
   render() {
-    console.log(this.props)
     return (
       <div className="col mb-4">
         <div class="card" style={{ width: "18rem" }}>
@@ -24,13 +21,17 @@ class CardCart extends Component {
               {this.props.price}
             </li>
           </ul>
-          <div class="card-body"> 
-          {/* <Link to={{pathname: '/show',state: {product: this.props}}}>
+          <div class="card-body">
+            {/* <Link to={{pathname: '/show',state: {product: this.props}}}>
             <button type="button" class="btn btn-primary mr-2">
               See more...
             </button>
             </Link> */}
-            <button type="button" class="btn btn-danger mr-2 md-" onClick={() => this.props.removeOrder(this.props.order)}>
+            <button
+              type="button"
+              class="btn btn-danger mr-2 md-"
+              onClick={() => this.props.removeOrder(this.props.order)}
+            >
               Remove
             </button>
           </div>

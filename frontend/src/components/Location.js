@@ -15,7 +15,7 @@ function Map() {
   let [target, setTarget] = useState(null);
   let [locals, setLocals] = useState([]);
   let [zip, setZip] = useState("");
-  // const [zipSearch, setZipSearch] = useState("")
+
   let [defCenter, setCenter] = useState({});
   useEffect(() => {
     fetch(
@@ -36,10 +36,7 @@ function Map() {
       .then((err) => setLocals({ locals: err.locations }));
   }, []);
   let searchLoc = (zip) => {
-    // console.log(zip)
-    // setZipSearch({zipSearch: zip.zip})
     getLocations(zip);
-    // getDefCenter(zip.zip)
   };
   let getLocations = (zip) => {
     fetch(
@@ -77,7 +74,7 @@ function Map() {
         setCenter({ defCenter: err.results[0].geometry.location })
       );
   };
-  if (locals.locals == undefined) {
+  if (locals.locals === undefined) {
     return <p> Getting locations</p>;
   }
 
@@ -144,7 +141,7 @@ function Location(props) {
 
   useEffect(() => {
     // let getUser = () => {
-    fetch(`http://localhost:3000/users/${props.location.state.user}`)
+    fetch(`http://localhost:3000/users/${localStorage.id}`)
       .then((res) => res.json())
       .then((user) =>
         setCart({
@@ -154,7 +151,7 @@ function Location(props) {
     // };
   }, []);
 
-  console.log(localStorage.id);
+  console.log(carts);
 
   return (
     <div>

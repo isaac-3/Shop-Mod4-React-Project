@@ -59,8 +59,6 @@ export default class NavBar extends React.Component {
       a.toLowerCase() > b.toLowerCase() ? 1 : -1
     );
 
-    console.log(localStorage);
-
     return (
       <nav
         style={{ "font-weight": "bold", "font-family": "Verdana" }}
@@ -81,7 +79,10 @@ export default class NavBar extends React.Component {
                 <Link
                   to={{
                     pathname: "/",
-                    state: { user: this.props.current_user_id },
+                    state: {
+                      user: this.props.current_user_id,
+                      cart: this.props.carts,
+                    },
                   }}
                 >
                   <li className="nav-item active">
