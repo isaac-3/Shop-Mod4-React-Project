@@ -1,31 +1,27 @@
-import React from 'react'
+/** @format */
 
-export class Category extends React.Component{
+import React from "react";
 
-//Isaac
-    state={
-       searchCategory:''
-    }
- 
-    inputs=(e)=>{
+export class Category extends React.Component {
+  state = {
+    searchCategory: "",
+  };
+
+  inputs = (e) => {
     this.setState({
-        searchCategory: e.target.value
-    })
-    }
-onSubmit=()=>{
-    // console.log(this.state)
-    this.props.searchCategory(this.state.searchCategory)
-}
+      searchCategory: e.target.value,
+    });
+  };
+  onSubmit = () => {
+    this.props.searchCategory(this.state.searchCategory);
+  };
 
-    render(){
-        return(
-            <div>
-            <label> Category </label>
-            {/* <input onChange={(e)=>this.inputs(e)}/> */}
-            <button value="submit" onClick={()=> this.onSubmit()}/>
-            </div>
-        )
-    }
-
-
+  render() {
+    return (
+      <div>
+        <label> Category </label>
+        <button value="submit" onClick={() => this.onSubmit()} />
+      </div>
+    );
+  }
 }

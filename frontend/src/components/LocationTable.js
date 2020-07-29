@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { Component } from "react";
 import LocationRows from "./LocationRows";
 
@@ -22,10 +24,7 @@ class LocationTable extends Component {
       .then((response) => {
         return response.json();
       })
-      .then((err) =>
-        // (err) => console.log(err)
-        this.setState({ locals: err.locations })
-      );
+      .then((err) => this.setState({ locals: err.locations }));
   }
 
   render() {

@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import ProductList from "./ProductList";
-import { Search } from "./Search";
-import { Category } from "./Category";
-import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 
 
@@ -21,10 +18,10 @@ class Random extends Component {
     this.setState({
       searchTerm: e.target.value,
     });
-    // this.getItems()
+
   };
 
-  // Isaac
+
   searchCategory = (searchTerm) => {
     this.setState({
       searchCategory: searchTerm,
@@ -96,8 +93,6 @@ class Random extends Component {
   };
 
   render() {
-    // console.log(this.state.products)
-    // console.log(this.props)
     let filteredProducts = [];
     if (this.state.products) {
       filteredProducts = this.state.products.filter((product) =>
@@ -108,11 +103,6 @@ class Random extends Component {
     } else {
       filteredProducts = [{ name: "No product" }];
     }
-
-
-  // if(this.props.location.state != undefined){
-  //   this.getUser()
-  // } 
 
     return (
       <div>

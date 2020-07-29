@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { Component } from "react";
 import Locals from "./Locals";
 
@@ -27,9 +29,3 @@ class LocationRows extends Component {
 }
 
 export default LocationRows;
-
-// <div>
-// {this.props.locals.map((local) => (
-//     <Locals locals={local} />
-//   ))}
-// </div>

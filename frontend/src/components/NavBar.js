@@ -1,31 +1,26 @@
+/** @format */
+
 import React from "react";
 import { Search } from "./Search";
-import { Login } from "./Login";
 import { Link } from "react-router-dom";
-import Checkout from "./Checkout";
-// import Alert from "react-bootstrap/Alert";
-// import ModalModalExample from "./Alert";
 import "./PastBtnCss.css";
 
 export default class NavBar extends React.Component {
-  state={
-   active: false
-  }
-
+  state = {
+    active: false,
+  };
 
   toggleHidden = () => {
     this.setState({
-      active: true
-    })
+      active: true,
+    });
   };
-
 
   toggleButton = () => {
     this.setState({
-      active: false
-    })
+      active: false,
+    });
   };
-
 
   render() {
     let categories = [
@@ -64,80 +59,80 @@ export default class NavBar extends React.Component {
 
     console.log(this.props);
     return (
-      <nav style={{"font-weight": "bold", "font-family": "Verdana"}}
-      className="navbar navbar-expand-lg navbar navbar-dark bg-info">
-       
+      <nav
+        style={{ "font-weight": "bold", "font-family": "Verdana" }}
+        className="navbar navbar-expand-lg navbar navbar-dark bg-info"
+      >
         <div class="container-fluid">
-        <ul className="navbar-nav mr-auto">
-          <div class="navbar-header">
-         
-          {this.props.current_user_id == undefined ? (
-              <Link to="/">
-                <li className="nav-item active">
-                  <a className="nav-link">
-                  Shoptastic <span className="sr-only">(current)</span>
-                  </a>
-                </li>
-              </Link>
-            ) : (
-              <Link
-                to={{
-                  pathname: "/home",
-                  state: { user: this.props.current_user_id },
-                }}
-              >
-                <li className="nav-item active">
-                  <a className="nav-link">
-                 Shoptastic <span className="sr-only">(current)</span>
-                  </a>
-                </li>
-              </Link>
-            )}
-       
-          </div>
-          
-          
+          <ul className="navbar-nav mr-auto">
+            <div class="navbar-header">
+              {this.props.current_user_id == undefined ? (
+                <Link to="/">
+                  <li className="nav-item active">
+                    <a className="nav-link">
+                      Shoptastic <span className="sr-only">(current)</span>
+                    </a>
+                  </li>
+                </Link>
+              ) : (
+                <Link
+                  to={{
+                    pathname: "/home",
+                    state: { user: this.props.current_user_id },
+                  }}
+                >
+                  <li className="nav-item active">
+                    <a className="nav-link">
+                      Shoptastic <span className="sr-only">(current)</span>
+                    </a>
+                  </li>
+                </Link>
+              )}
+            </div>
 
             <li className="nav-item">
-             
               {this.props.current_user_id ? (
-                 <Link
-                 to={{
-                   pathname: "/cart",
-                   state: {
-                     user: this.props.current_user_id,
-                     cart: this.props.carts,
-                     removeOrder: this.props.removeOrder,
-                   },
-                 }}
-               >  <a className= "nav-link" >
-                 Past Orders</a>
-                  </Link>//alert("Please log in to see past orders")
-              ) :(
+                <Link
+                  to={{
+                    pathname: "/cart",
+                    state: {
+                      user: this.props.current_user_id,
+                      cart: this.props.carts,
+                      removeOrder: this.props.removeOrder,
+                    },
+                  }}
+                >
+                  {" "}
+                  <a className="nav-link">Past Orders</a>
+                </Link> //alert("Please log in to see past orders")
+              ) : (
                 <div>
-                  <a className="nav-link" onClick={()=>this.toggleHidden()}>
-                    Past Orders 
+                  <a className="nav-link" onClick={() => this.toggleHidden()}>
+                    Past Orders
                   </a>
-                  <div className={this.state.active===true ? "overlay active" : "overlay "}> 
-                  
+                  <div
+                    className={
+                      this.state.active === true ? "overlay active" : "overlay "
+                    }
+                  >
                     <div className="popup">
                       {/* <h2>Here i am</h2> */}
-                      <a className="close" onClick={()=> this.toggleButton()} >
-                      <br/>
-                      
-                      
-                       &times;
+                      <a className="close" onClick={() => this.toggleButton()}>
+                        <br />
+                        &times;
                       </a>
-                    
-                      <div style={{"font-family": "Verdana"}} className="content">
-                        You are not logged in. Please log in to see your past orders.
+
+                      <div
+                        style={{ "font-family": "Verdana" }}
+                        className="content"
+                      >
+                        You are not logged in. Please log in to see your past
+                        orders.
                       </div>
-                     
                     </div>
                   </div>
                 </div>
-              ) }
-             
+              )}
             </li>
 
             <li class="nav-item dropdown">
@@ -172,49 +167,55 @@ export default class NavBar extends React.Component {
               </Link>
             </li>
 
-
             <li className="nav-item">
-{this.props.current_user_id ? (
-            <Link
-              to={{
-                pathname: "/checkout",
-                state: {
-                  user: this.props.current_user_id,
-                  cart: this.props.carts,
-                },
-              }}
-            > <a
-                  className="btn btn-light"  > <i className="fas fa-shopping-cart text-dark">
-                    Checkout</i>
-                    </a>
-                    </Link>) : (
-                        <div >
-    <a  className="btn btn-light" onClick={()=>this.toggleHidden()}>
-    <i className="fas fa-shopping-cart text-dark">
-                    Checkout</i>
-    </a>
-    <div className={this.state.active===true ? "overlay active" : "overlay "}> 
-    
-      <div className="popup">
-        <a className="close" onClick={()=> this.toggleButton()} >
-          &times;
-        </a>
-        <div style={{"font-family": "Verdana"}}  className="content">
-          You are not logged in. Please log in to see your past orders.
-        </div>
-       
-      </div>
-    </div>
-  </div>
-) }
- </li>
-           
+              {this.props.current_user_id ? (
+                <Link
+                  to={{
+                    pathname: "/checkout",
+                    state: {
+                      user: this.props.current_user_id,
+                      cart: this.props.carts,
+                    },
+                  }}
+                >
+                  {" "}
+                  <a className="btn btn-light">
+                    {" "}
+                    <i className="fas fa-shopping-cart text-dark">Checkout</i>
+                  </a>
+                </Link>
+              ) : (
+                <div>
+                  <a
+                    className="btn btn-light"
+                    onClick={() => this.toggleHidden()}
+                  >
+                    <i className="fas fa-shopping-cart text-dark">Checkout</i>
+                  </a>
+                  <div
+                    className={
+                      this.state.active === true ? "overlay active" : "overlay "
+                    }
+                  >
+                    <div className="popup">
+                      <a className="close" onClick={() => this.toggleButton()}>
+                        &times;
+                      </a>
+                      <div
+                        style={{ "font-family": "Verdana" }}
+                        className="content"
+                      >
+                        You are not logged in. Please log in to checkout.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </li>
           </ul>
 
           <Search searchItem={this.props.searchItem} />
           <ul class="nav navbar-nav navbar-right">
-          
-
             {this.props.current_user_id === undefined ? (
               <Link to="/login">
                 {" "}

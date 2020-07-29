@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import Card from "./Card";
 
@@ -17,11 +19,11 @@ export default function Product(props) {
   let image = base + second;
   let image2 = base + third;
   let image3 = base + fourth;
-console.log(props.product.top_reviews)
+  console.log(props.product.top_reviews);
 
- let reviews= props.product.top_reviews === undefined ? [] : props.product.top_reviews
+  let reviews =
+    props.product.top_reviews === undefined ? [] : props.product.top_reviews;
   return (
-
     <div>
       <Card
         title={props.product.title}
