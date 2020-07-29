@@ -1,8 +1,8 @@
+
+/** @format */
+
 import React from "react";
-import { Search } from "./Search";
-import { Login } from "./Login";
 import { Link } from "react-router-dom";
-import Checkout from "./Checkout";
 
 export default class CartNavBar extends React.Component {
   render() {

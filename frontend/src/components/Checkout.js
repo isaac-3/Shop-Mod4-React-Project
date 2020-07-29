@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState } from "react";
 import EditCart from "./EditCart";
 import NavBar from "./NavBar";
@@ -115,10 +117,6 @@ export default class Checkout extends React.Component {
                     </div>
                     <div class="form-group col-md-9">
                       <label for="validationDefaultUsername">City</label>
-
-                      {/* <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroupPrepend2"></span>
-                            </div> */}
                       <input
                         type="text"
                         id="city"
@@ -182,7 +180,6 @@ export default class Checkout extends React.Component {
                         type="text"
                         class="form-control "
                         id="cname"
-                        // placeholder="Name On Card"
                         name="cardname"
                         required
                       />
@@ -196,7 +193,6 @@ export default class Checkout extends React.Component {
                         id="ccnum"
                         class="form-control"
                         id="validationDefault02"
-                        // placeholder="Credit Card Number"
                         name="Credit Card Number"
                         required
                       />
@@ -204,14 +200,10 @@ export default class Checkout extends React.Component {
                     <div class="col-md-70 mb-9">
                       <label for="validationDefaultUsername">Exp.Date</label>
                       <div class="input-group">
-                        {/* <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroupPrepend2"></span>
-                            </div> */}
                         <input
                           type="text"
                           class="form-control"
                           id="expd"
-                          // placeholder="03/09"
                           aria-describedby="inputGroupPrepend2"
                           name="expirationd"
                           required
@@ -221,20 +213,15 @@ export default class Checkout extends React.Component {
                     <div class="col-md-10 mb-9">
                       <label for="validationDefaultUsername">CVV</label>
                       <div class="input-group">
-                        {/* <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroupPrepend2"></span>
-                            </div> */}
                         <input
                           type="text"
                           class="form-control"
                           id="cvvid"
                           name="cvv"
-                          // placeholder="521"
                           aria-describedby="inputGroupPrepend2"
                           required
                         />
                       </div>
-
                     </div>
                   </div>
                   <div class="form-group">
@@ -249,26 +236,24 @@ export default class Checkout extends React.Component {
                           label="Agree to terms and conditions"
                           feedback="You must agree before submitting."
                         />
-                        <div class= "text-left">
-                        <label class="form-check-label" for="invalidCheck2">
-                          Agree to terms and conditions
-                        </label>
-      
+                        <div class="text-left">
+                          <label class="form-check-label" for="invalidCheck2">
+                            Agree to terms and conditions
+                          </label>
+                        </div>
+                        <br />
+                        <div class="text-left">
+                          <button
+                            class="btn btn-primary"
+                            type="submit"
+                            onClick={() => this.purchased(user_id)}
+                          >
+                            Purchase
+                          </button>
+                        </div>
                       </div>
-                      <br />
-                      <div class="text-left">
-                        <button
-                          class="btn btn-primary"
-                          type="submit"
-                          onClick={() => this.purchased(user_id)}
-                        >
-                          Purchase
-                        </button>
-                      </div>
-
                     </div>
                   </div>
-                </div>
                 </div>
               </form>
             </Col>
@@ -278,4 +263,3 @@ export default class Checkout extends React.Component {
     );
   }
 }
-

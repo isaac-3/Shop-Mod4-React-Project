@@ -1,12 +1,11 @@
+
+/** @format */
+
 import React, { Component } from "react";
 import NavBar from "./NavBar";
 import { Carousel, Card, ListGroup } from "react-bootstrap";
 
 class ShowProduct extends Component {
-  // state = {
-  //     user: this.props.location.state.product.user
-  // }
-
   addToCart = (prod) => {
     let newProd = {
       title: prod.title,
@@ -15,10 +14,9 @@ class ShowProduct extends Component {
       image: prod.image,
     };
 
-    console.log(localStorage);
-  };
 
   render() {
+    console.log(this.props.location.state.product)
     return (
       <div>
         <NavBar
@@ -110,6 +108,7 @@ class ShowProduct extends Component {
                 </Card.Body>
               </ListGroup>
               <h3>Reviews</h3>
+
               {this.props.location.state.product.reviews.length == 0
                 ? "No reviews"
                 : this.props.location.state.product.reviews.map(

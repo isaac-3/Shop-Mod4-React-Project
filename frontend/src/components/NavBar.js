@@ -1,10 +1,8 @@
+/** @format */
+
 import React from "react";
 import { Search } from "./Search";
-import { Login } from "./Login";
 import { Link } from "react-router-dom";
-import Checkout from "./Checkout";
-// import Alert from "react-bootstrap/Alert";
-// import ModalModalExample from "./Alert";
 import "./PastBtnCss.css";
 
 export default class NavBar extends React.Component {
@@ -78,11 +76,8 @@ export default class NavBar extends React.Component {
               ) : (
                 <Link
                   to={{
-                    pathname: "/",
-                    state: {
-                      user: this.props.current_user_id,
-                      cart: this.props.carts,
-                    },
+                    pathname: "/home",
+                    state: { user: this.props.current_user_id },
                   }}
                 >
                   <li className="nav-item active">
@@ -120,7 +115,7 @@ export default class NavBar extends React.Component {
                     }
                   >
                     <div className="popup">
-                      {/* <h2>Here i am</h2> */}
+                    
                       <a className="close" onClick={() => this.toggleButton()}>
                         <br />
                         &times;
@@ -139,7 +134,7 @@ export default class NavBar extends React.Component {
               )}
             </li>
 
-            {/* <li class="nav-item dropdown"> */}
+           
             <li
               className={
                 window.location.href === "http://localhost:3001/"
@@ -150,14 +145,13 @@ export default class NavBar extends React.Component {
               <a
                 class="nav-link dropdown-toggle"
                 href="/"
-                // className="text-light"
+          
                 id="navbarDropdown"
-                // role="button"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
                 color="red"
-                // onClick={()=>  }</li>
+       
               >
                 Categories
               </a>
@@ -166,7 +160,7 @@ export default class NavBar extends React.Component {
                   <a
                     class="dropdown-item"
                     onClick={() => this.props.searchCategory(s)}
-                    // href="/"
+                 
                   >
                     {s}
                   </a>
@@ -225,8 +219,7 @@ export default class NavBar extends React.Component {
                         style={{ "font-family": "Verdana" }}
                         className="content"
                       >
-                        You are not logged in. Please log in to see your past
-                        orders.
+                        You are not logged in. Please log in to checkout.
                       </div>
                     </div>
                   </div>
@@ -258,7 +251,5 @@ export default class NavBar extends React.Component {
         </div>
       </nav>
     );
-    //   }
-    // }
   }
 }

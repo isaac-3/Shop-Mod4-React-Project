@@ -16,10 +16,10 @@ class Random extends Component {
     this.setState({
       searchTerm: e.target.value,
     });
-    // this.getItems()
+
   };
 
-  // Isaac
+
   searchCategory = (searchTerm) => {
     this.setState({
       searchCategory: searchTerm,
@@ -88,7 +88,6 @@ class Random extends Component {
   };
 
   render() {
-    console.log(this.state.carts);
     let filteredProducts = [];
     if (this.state.products) {
       filteredProducts = this.state.products.filter((product) =>
@@ -100,9 +99,6 @@ class Random extends Component {
       filteredProducts = [{ name: "No product" }];
     }
 
-    // if(this.props.location.state != undefined){
-    //   this.getUser()
-    // }
 
     return (
       <div>

@@ -1,3 +1,8 @@
+
+/** @format */
+
+=======
+
 import React, { useState, useEffect } from "react";
 import {
   GoogleMap,
@@ -8,14 +13,11 @@ import {
 } from "react-google-maps";
 import NavBar from "./NavBar";
 import { LocationInput } from "./LocationInput";
-import { SearchLocation } from "./SearchLocation";
 import LocationTable from "./LocationTable";
 
 function Map() {
   let [target, setTarget] = useState(null);
   let [locals, setLocals] = useState([]);
-  let [zip, setZip] = useState("");
-
   let [defCenter, setCenter] = useState({});
   useEffect(() => {
     fetch(
@@ -56,25 +58,16 @@ function Map() {
       })
       .then((err) => setLocals({ locals: err.locations }));
   };
-  // useEffect(()=>{
-  //   fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=77001&key=${process.env.REACT_APP_GOOGLE_KEY}`)
-  //   .then(res => res.json())
-  //   .then(err => (
-  //     // console.log(err.results[0].geometry.location)
-  //     // setCenter({defCenter: err.results[0].geometry.location})
-  //     ))
-  //   },[])
   let getDefCenter = (zip) => {
     fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?address=${zip}&key=${process.env.REACT_APP_GOOGLE_KEY}`
     )
       .then((res) => res.json())
       .then((err) =>
-        // console.log(err.results[0].geometry.location)
         setCenter({ defCenter: err.results[0].geometry.location })
       );
   };
-  if (locals.locals === undefined) {
+  if (locals.locals == undefined) {
     return <p> Getting locations</p>;
   }
 
@@ -119,16 +112,12 @@ function Map() {
                 {target.address.city} <br />
                 {target.address.state} <br />
                 {target.address.postal_code} <br />
-                {/* {target.desc} */}
               </a>
             </div>
           </InfoWindow>
         )}
       </GoogleMap>
       <div>
-        {/* <label> Enter your zip code: </label>
-              <input type="number" pattern="\d*" maxlength="5" onChange={(e)=>inputs(e)}/>
-              <button value="submit" onClick={()=> onSubmit()}>Search</button> */}
         <LocationInput searchLoc={searchLoc} />
       </div>
     </div>

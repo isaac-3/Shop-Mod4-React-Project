@@ -1,18 +1,16 @@
+/** @format */
+
 import React, { Component } from "react";
-import PrevCardCart from "./PrevCardCart";
-import CardCart from './CardCart'
+import CardCart from "./CardCart";
 
 export default function CartProduct(props) {
   let image = props.product.image;
 
-  let price = props.product.price == undefined ? "120" : props.product.price
-  
+  let price = props.product.price == undefined ? "120" : props.product.price;
 
   return (
-  
     <div>
-      
-<CardCart
+      <CardCart
         title={props.product.title}
         description={props.product.description}
         image={image}
