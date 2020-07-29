@@ -1,3 +1,4 @@
+
 /** @format */
 
 import React, { Component } from "react";
@@ -12,20 +13,10 @@ class ShowProduct extends Component {
       description: prod.description,
       image: prod.image,
     };
-    let current_cart =
-      prod.carts.length == 1 ? prod.carts[0] : prod.carts.slice(-1)[0];
-    fetch(`http://localhost:3000/carts/${current_cart.id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        user_id: current_cart.user_id,
-        newProd: newProd,
-      }),
-    });
-  };
+
 
   render() {
-    console.log(this.props.location.state.product);
+    console.log(this.props.location.state.product)
     return (
       <div>
         <NavBar
@@ -86,7 +77,7 @@ class ShowProduct extends Component {
                     {this.props.location.state.product.title}
                   </ListGroup.Item>
                   <ListGroup.Item>
-                    {this.props.location.state.product.description ==
+                    {this.props.location.state.product.description ===
                     undefined ? (
                       <p>No description</p>
                     ) : (
@@ -94,7 +85,7 @@ class ShowProduct extends Component {
                     )}
                   </ListGroup.Item>
                   <ListGroup.Item>
-                    {this.props.location.state.product.price.current_retail ==
+                    {this.props.location.state.product.price.current_retail ===
                     undefined ? (
                       <p>Price:$120</p>
                     ) : (

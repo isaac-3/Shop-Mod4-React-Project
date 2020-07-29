@@ -1,3 +1,4 @@
+
 /** @format */
 
 import React from "react";
@@ -72,7 +73,7 @@ export default class CartNavBar extends React.Component {
                   pathname: "/cart",
                   state: {
                     user: user,
-                    cart: this.props.carts,
+                    carts: this.props.carts,
                     removeOrder: this.props.removeOrder,
                   },
                 }}

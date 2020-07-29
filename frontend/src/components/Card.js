@@ -13,7 +13,6 @@ class Card extends Component {
     };
     let current_cart =
       prod.carts.length == 1 ? prod.carts[0] : prod.carts.slice(-1)[0];
-    console.log(current_cart);
     fetch(`http://localhost:3000/carts/${current_cart.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
@@ -25,6 +24,7 @@ class Card extends Component {
   };
 
   render() {
+
     return (
       <div className="col mb-4">
         <div class="card" style={{ width: "18rem" }}>

@@ -57,7 +57,6 @@ export default class NavBar extends React.Component {
       a.toLowerCase() > b.toLowerCase() ? 1 : -1
     );
 
-    console.log(this.props);
     return (
       <nav
         style={{ "font-weight": "bold", "font-family": "Verdana" }}
@@ -116,7 +115,7 @@ export default class NavBar extends React.Component {
                     }
                   >
                     <div className="popup">
-                      {/* <h2>Here i am</h2> */}
+                    
                       <a className="close" onClick={() => this.toggleButton()}>
                         <br />
                         &times;
@@ -135,17 +134,24 @@ export default class NavBar extends React.Component {
               )}
             </li>
 
-            <li class="nav-item dropdown">
+           
+            <li
+              className={
+                window.location.href === "http://localhost:3001/"
+                  ? "nav-item dropdown"
+                  : "nav-item "
+              }
+            >
               <a
                 class="nav-link dropdown-toggle"
-                // href=""
-                // className="text-light"
+                href="/"
+          
                 id="navbarDropdown"
-                // role="button"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
                 color="red"
+       
               >
                 Categories
               </a>
@@ -154,6 +160,7 @@ export default class NavBar extends React.Component {
                   <a
                     class="dropdown-item"
                     onClick={() => this.props.searchCategory(s)}
+                 
                   >
                     {s}
                   </a>
@@ -162,7 +169,14 @@ export default class NavBar extends React.Component {
             </li>
 
             <li className="nav-item active">
-              <Link to="/locations">
+              <Link
+                to={{
+                  pathname: "/locations",
+                  state: {
+                    user: localStorage.id,
+                  },
+                }}
+              >
                 <a className="nav-link">Locations</a>
               </Link>
             </li>
@@ -227,7 +241,7 @@ export default class NavBar extends React.Component {
                 </li>
               </Link>
             ) : (
-              <Link to="/">
+              <Link to="/" onClick={() => localStorage.clear()}>
                 <li className="nav-item">
                   <a className="nav-link">Log Out</a>
                 </li>
@@ -237,7 +251,5 @@ export default class NavBar extends React.Component {
         </div>
       </nav>
     );
-    //   }
-    // }
   }
 }

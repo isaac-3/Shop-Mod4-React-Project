@@ -7,12 +7,12 @@ export default function Product(props) {
   let base = props.product.images[0].base_url;
   let second = props.product.images[0].primary;
   let third =
-    props.product.images[0].alternate_urls == undefined
+    props.product.images[0].alternate_urls === undefined
       ? ""
       : props.product.images[0].alternate_urls[1];
 
   let fourth =
-    props.product.images[0].alternate_urls == undefined
+    props.product.images[0].alternate_urls === undefined
       ? ""
       : props.product.images[0].alternate_urls[2];
 

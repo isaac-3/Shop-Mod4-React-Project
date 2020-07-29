@@ -1,4 +1,7 @@
+
 /** @format */
+
+=======
 
 import React, { useState, useEffect } from "react";
 import {
@@ -11,6 +14,7 @@ import {
 import NavBar from "./NavBar";
 import { LocationInput } from "./LocationInput";
 import LocationTable from "./LocationTable";
+
 function Map() {
   let [target, setTarget] = useState(null);
   let [locals, setLocals] = useState([]);
@@ -54,7 +58,6 @@ function Map() {
       })
       .then((err) => setLocals({ locals: err.locations }));
   };
-
   let getDefCenter = (zip) => {
     fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?address=${zip}&key=${process.env.REACT_APP_GOOGLE_KEY}`
@@ -67,6 +70,7 @@ function Map() {
   if (locals.locals == undefined) {
     return <p> Getting locations</p>;
   }
+
   return (
     <div>
       <GoogleMap
@@ -120,10 +124,27 @@ function Map() {
   );
 }
 const WrappedMap = withScriptjs(withGoogleMap(Map));
-function Location() {
+
+function Location(props) {
+  let [carts, setCart] = useState([]);
+
+  useEffect(() => {
+    // let getUser = () => {
+    fetch(`http://localhost:3000/users/${localStorage.id}`)
+      .then((res) => res.json())
+      .then((user) =>
+        setCart({
+          carts: user.carts,
+        })
+      );
+    // };
+  }, []);
+
+  console.log(carts);
+
   return (
     <div>
-      <NavBar />
+      <NavBar current_user_id={localStorage.id} carts={carts.carts} />
       <div
         style={{
           width: "100vh",
